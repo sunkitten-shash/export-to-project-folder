@@ -46,5 +46,5 @@
   )
 (if (not directory) (setf directory ""))
 (format t "~a~a~%" "Directory: " directory)
-(aud-do (format nil "SetPreference: Name=\"Export\/Path\" Value=\"~a\"" directory))
+(aud-do-command "SetPreference" :name "Export/Path" :value directory)
 (aud-do-command "ExportSel")
