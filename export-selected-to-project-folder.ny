@@ -2,7 +2,7 @@
 ;; well THAT fixes shit,,,,
 ;version 4
 ;type tool
-;name "Export to project folder"
+;name "Export selected to project folder"
 ;release 1.0
 ;author "sunkitten_shash"
 ;copyright "Released under terms of the GNU General Public License version 3"
@@ -47,4 +47,4 @@
 (if (not directory) (setf directory ""))
 (format t "~a~a~%" "Directory: " directory)
 (aud-do (format nil "SetPreference: Name=\"Export\/Path\" Value=\"~a\"" directory))
-(aud-do-command "Export")
+(aud-do-command "ExportSel")
