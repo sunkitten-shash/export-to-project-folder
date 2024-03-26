@@ -19,7 +19,8 @@
   (let ((menus (aud-get-info "menus"))
   ;; this may be different on MacOS; may be "Open Recent"?
     (menuStr "Recent Files")
-    (fName (format nil "~a~a~a" *file-separator* filename ".aup"))
+    (fNameOld (format nil "~a~a~a" *file-separator* filename ".aup"))
+    (fNameNew (format nil "~a~a~a" *file-separator* filename ".aup3"))
     isRecent
     recent)
     (dolist (row menus)
@@ -27,7 +28,7 @@
         (when isRecent
           (when (string= str "----")
             (return-from pathname-from-recents ""))
-          (when (string-ends-with str fName)
+          (when (or (string-ends-with str fNameOld) (string-ends-with str fNameNew))
             (return-from pathname-from-recents str)))
         (when (string= str menuStr)
           (setf isRecent t))
@@ -36,9 +37,14 @@
   )
 )
 
-(format t "~a~a~%" "Pathname: " (subseq (pathname-from-recents) 0 (- (length (pathname-from-recents)) (length (format nil "~a~a" filename ".aup")))))
-(setf directory (subseq (pathname-from-recents) 0 (- (length (pathname-from-recents)) (length (format nil "~a~a" filename ".aup")))))
-;; TODO: set it as default documents dir if not available?
+(setf full-path (pathname-from-recents))
+  (format t "~a~a~%" "Pathname: " full-path)
+  (when (string-ends-with full-path "aup3")
+    (setf directory (subseq full-path 0 (- (length full-path) (length (format nil "~a~a" filename ".aup3"))))))
+  (when (string-ends-with full-path "aup")
+    (setf directory (subseq full-path 0 (- (length full-path) (length (format nil "~a~a" filename ".aup")))))
+  )
 (if (not directory) (setf directory ""))
+(format t "~a~a~%" "Directory: " directory)
 (aud-do (format nil "SetPreference: Name=\"Export\/Path\" Value=\"~a\"" directory))
-(print (format nil "~a~a~%" "Set default export directory to " directory))
+(print (format nil "~a~a" "Set default export directory to: " directory))
