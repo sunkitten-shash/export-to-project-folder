@@ -4,7 +4,7 @@ This is a plugin for Audacity that allows for exporting audio from a project to 
 [export-to-project-folder.ny](./export-to-project-folder.ny) will perform a regular "Export Audio..." command, while [export-selected-to-project-folder.ny](./export-selected-to-project-folder.ny) will export selected audio, at least in versions of Audacity that have that command.
 
 ## How to Use
-Download [export-to-project-folder.ny](./export-to-project-folder.ny) and install it as any other Nyquist plugin.
+Download [export-to-project-folder.ny](./export-to-project-folder.ny) or [export-selected-to-project-folder.ny](./export-selected-to-project-folder.ny) and install it as any other Nyquist plugin.
 
 Use the script by going into `Tools` -> `Export to project folder`. It should open up the normal export dialog but with the file location set to the folder of the Audacity project.
 
