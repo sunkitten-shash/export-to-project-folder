@@ -1,5 +1,4 @@
 ;nyquist plug-in
-;; well THAT fixes shit,,,,
 ;version 4
 ;type tool
 ;name "Export to project folder"
