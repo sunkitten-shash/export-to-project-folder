@@ -11,6 +11,7 @@ Use the script by going into `Tools` -> `Export to project folder`. It should op
 ## Limitations
 - Mostly tested in Audacity 2.4.2. Does not seem to work in 3.4.2 with the new file export dialog. Other versions have not been tested.
   - Tested primarily in Ubuntu, with only incidental testing in Windows
+  - Newer versions of Audacity use the `ExportAudio` rather than the `Export` command that is used in the code - this may be one of the issues with newer versions
 - Not tested on MacOS. May require changing "Recent Files" to "Open Recent" in the code.
 - May mess up other default file export location settings
 - Will not work properly if current project is not in the recent files menu (due to either not being saved or many things having been opened since its last save)
