@@ -1,8 +1,8 @@
 ;nyquist plug-in
 ;version 4
 ;type tool
-;name "Export selected to project folder"
-;release 2.0
+;name "Set export to project folder"
+;release 1.0
 ;author "sunkitten_shash"
 ;copyright "Released under terms of the GNU General Public License version 3"
 
@@ -57,10 +57,3 @@
 (format t "~a~a~%" "Directory: " directory)
 (format t "~a~a~%" "Preference name: " (preference-name-from-version))
 (aud-do-command "SetPreference" :name (preference-name-from-version) :value directory)
-(if (<= 4 (second version))
-  (progn
-    (aud-do-command "SetPreference" :name "ExportAudioDialog/ExportRange" :value "selection")
-    (aud-do-command "Export")
-  )
-  (aud-do-command "ExportSel")
-)

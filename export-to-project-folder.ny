@@ -2,11 +2,12 @@
 ;version 4
 ;type tool
 ;name "Export to project folder"
-;release 1.0
+;release 2.0
 ;author "sunkitten_shash"
 ;copyright "Released under terms of the GNU General Public License version 3"
 
 (setf filename (get '*project* 'name))
+(setf version (get '*audacity* 'version))
 
 (defun string-ends-with (str sub)
   (let 
@@ -36,14 +37,24 @@
   )
 )
 
+(defun preference-name-from-version ()
+  (if (eql 3 (first version))
+    (if (<= 4 (second version))
+      (return-from preference-name-from-version "ExportAudioDialog/DefaultPath")
+      (return-from preference-name-from-version "Directories/Export/LastUsed")
+    )
+    (return-from preference-name-from-version "Export/Path")
+  )
+)
+
 (setf full-path (pathname-from-recents))
-  (format t "~a~a~%" "Pathname: " full-path)
   (when (string-ends-with full-path "aup3")
     (setf directory (subseq full-path 0 (- (length full-path) (length (format nil "~a~a" filename ".aup3"))))))
   (when (string-ends-with full-path "aup")
     (setf directory (subseq full-path 0 (- (length full-path) (length (format nil "~a~a" filename ".aup")))))
   )
 (if (not directory) (setf directory ""))
+(format t "~a~a~%" "Audacity Version: " version)
 (format t "~a~a~%" "Directory: " directory)
-(aud-do-command "SetPreference" :name "Export/Path" :value directory)
+(format t "~a~a~%" "Preference name: " (preference-name-from-version))
 (aud-do-command "Export")
