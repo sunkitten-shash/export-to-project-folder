@@ -39,9 +39,9 @@
 
 (defun preference-name-from-version ()
   (if (eql 3 (first version))
-    (if (<= 4 (second version))
-      (return-from preference-name-from-version "ExportAudioDialog/DefaultPath")
+    (if (>= 4 (second version))
       (return-from preference-name-from-version "Directories/Export/LastUsed")
+      (return-from preference-name-from-version "ExportAudioDialog/DefaultPath")
     )
     (return-from preference-name-from-version "Export/Path")
   )

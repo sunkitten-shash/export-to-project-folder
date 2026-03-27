@@ -10,7 +10,7 @@ Feel free to open issues for bugs/feature requests that are not mentioned below.
 
 ## How to Use
 
-Download [export-to-project-folder.ny](./export-to-project-folder.ny), [export-selected-to-project-folder.ny](./export-selected-to-project-folder.ny), and/oror [set-export-to-project-folder.ny](./set-export-to-project-folder.ny) and install as any other Nyquist plugin. Ensure that there is no default export path set in your Audacity preferences.
+Download [export-to-project-folder.ny](./export-to-project-folder.ny), [export-selected-to-project-folder.ny](./export-selected-to-project-folder.ny), and/or [set-export-to-project-folder.ny](./set-export-to-project-folder.ny) and install as any other Nyquist plugin. Ensure that there is no default export path set in your Audacity preferences.
 
 Use the script by going into `Tools` -> `Export to project folder`, `Export selected to project folder`, or `Set export to project folder`. (In Audacity 3, if multiple are installed, they may appear under `Tools` -> `sunkitten_shash`.) This should open up the normal export dialog but with the file location set to the folder of the Audacity project.
 
